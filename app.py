@@ -19,10 +19,15 @@ def sentiment_analysis():
         text_to_analyze = [request.form['text_to_analyze']]
         sentiment_response = ai_client.analyze_sentiment(documents=text_to_analyze)
         key_phrases_response = ai_client.extract_key_phrases(documents=text_to_analyze)
+        entities_response = ai_client.recognize_entities(documents=text_to_analyze)
+        linked_entities_response = ai_client.recognize_linked_entities(documents=text_to_analyze)
         return render_template('sentiment_analysis.html', 
                                sentiment=sentiment_response[0].sentiment, 
-                               key_phrases=key_phrases_response[0].key_phrases)
-    return render_template('sentiment_analysis.html', sentiment=None, key_phrases=None)
+                               key_phrases=key_phrases_response[0].key_phrases,
+                               entities=entities_response[0].entities,
+                               linked_entities=linked_entities_response[0].entities)
+    return render_template('sentiment_analysis.html', sentiment=None, key_phrases=None, entities=None, linked_entities=None)
+
 
 
 if __name__ == '__main__':
