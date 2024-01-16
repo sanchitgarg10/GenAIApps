@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Language & Sentiment Analysis </title>
+    <title>Sentiment Analysis Demo</title>
 </head>
 <body>
-    <h1>Language & Sentiment Analysis</h1>
-    <p>Enter sample text for language analysis</p>
+    <h1>Sentiment Analysis</h1>
     <form action="/sentiment-analysis" method="post">
         <textarea name="text_to_analyze" placeholder="Enter text here"></textarea>
+        <br>
         <input type="submit" value="Analyze">
     </form>
 
     {% if sentiment %}
     <h2>Analysis Results</h2>
-    <p>Sentiment: {{ sentiment }}</p>
+    <p><strong>Sentiment:</strong> {{ sentiment }}</p>
+    
+    {% if key_phrases %}
+    <p><strong>Key Phrases:</strong></p>
+    <ul>
+        {% for phrase in key_phrases %}
+        <li>{{ phrase }}</li>
+        {% endfor %}
+    </ul>
     {% endif %}
-
-
+    {% endif %}
 </body>
 </html>
