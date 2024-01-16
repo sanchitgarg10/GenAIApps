@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sentiment Analysis Demo</title>
+    <title>Language & Sentiment Analysis </title>
 </head>
 <body>
-    <h1>Sentiment Analysis</h1>
-    <p>This is a demo of the Sentiment Analysis service.</p>
-    <!-- More content will go here -->
+    <h1>Language & Sentiment Analysis</h1>
+    <p>Enter sample text for language analysis</p>
+    <form action="/sentiment-analysis" method="post">
+        <textarea name="text_to_analyze" placeholder="Enter text here"></textarea>
+        <input type="submit" value="Analyze">
+    </form>
+
+    {% if sentiment %}
+    <h2>Analysis Results</h2>
+    <p>Sentiment: {{ sentiment }}</p>
+    {% endif %}
+
+
 </body>
 </html>
