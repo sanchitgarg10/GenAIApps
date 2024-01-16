@@ -2,3 +2,10 @@
 .DS_Store
 env
 venv
+.vscode/
+.idea/
+Thumbs.db
+env/
+__pycache__/
+*.log
+
