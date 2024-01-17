@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Whisper Speech-to-Text</title>
+</head>
+<body>
+    <form action="/whisper" method="post" enctype="multipart/form-data">
+        <input type="file" name="audiofile">
+        <input type="submit" value="Upload and Transcribe">
+    </form>
+    {% if transcription %}
+    <p>Transcription:</p>
+    <textarea rows="10" cols="50">{{ transcription }}</textarea>
+    {% endif %}
+</body>
+</html>
