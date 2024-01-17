@@ -4,13 +4,16 @@
     <title>Sentiment Analysis Demo</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .list-group-item { padding: 0.5rem 1.25rem; }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
         <h1 class="mb-4">Sentiment Analysis</h1>
         <form action="/sentiment-analysis" method="post">
             <div class="form-group">
-                <textarea class="form-control" name="text_to_analyze" placeholder="Enter text here" rows="4"></textarea>
+                <textarea class="form-control" name="text_to_analyze" placeholder="Enter text here" rows="4">{{ text_to_analyze }}</textarea>
             </div>
             <button type="submit" class="btn btn-primary">Analyze</button>
         </form>
@@ -20,31 +23,20 @@
             <h2>Analysis Results</h2>
             <p><strong>Sentiment:</strong> {{ sentiment }}</p>
 
-            {% if key_phrases %}
-            <p><strong>Key Phrases:</strong></p>
-            <ul class="list-group mb-4">
-                {% for phrase in key_phrases %}
-                <li class="list-group-item">{{ phrase }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-
             {% if entities %}
             <p><strong>Entities:</strong></p>
-            <ul class="list-group mb-4">
+            <ul class="list-group mb-2">
                 {% for entity in entities %}
                 <li class="list-group-item">{{ entity.text }} ({{ entity.category }})</li>
                 {% endfor %}
             </ul>
             {% endif %}
 
-            {% if linked_entities %}
-            <p><strong>Linked Entities:</strong></p>
-            <ul class="list-group">
-                {% for linked_entity in linked_entities %}
-                <li class="list-group-item">
-                    <a href="{{ linked_entity.url }}" target="_blank">{{ linked_entity.name }}</a>
-                </li>
+            {% if key_phrases %}
+            <p><strong>Key Phrases:</strong></p>
+            <ul class="list-group mb-4">
+                {% for phrase in key_phrases %}
+                <li class="list-group-item">{{ phrase }}</li>
                 {% endfor %}
             </ul>
             {% endif %}
