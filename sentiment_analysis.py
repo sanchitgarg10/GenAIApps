@@ -18,10 +18,22 @@ def sentiment_analysis():
     text_to_analyze = ""
     if request.method == 'POST':
         text_to_analyze = request.form['text_to_analyze']
-        # ... Azure API calls ...
+        # Perform sentiment analysis
+        sentiment_response = ai_client.analyze_sentiment(documents=[text_to_analyze])
+        # Perform key phrase extraction
+        key_phrases_response = ai_client.extract_key_phrases(documents=[text_to_analyze])
+        # Perform entity recognition
+        entities_response = ai_client.recognize_entities(documents=[text_to_analyze])
+        # Perform linked entity recognition
+        linked_entities_response = ai_client.recognize_linked_entities(documents=[text_to_analyze])
+        
+        # Pass the results back to the template
         return render_template('sentiment_analysis.html',
                                text_to_analyze=text_to_analyze,
                                sentiment=sentiment_response[0].sentiment,
                                key_phrases=key_phrases_response[0].key_phrases,
-                               entities=entities_response[0].entities)
-    return render_template('sentiment_analysis.html', text_to_analyze=text_to_analyze)
+                               entities=entities_response[0].entities,
+                               linked_entities=linked_entities_response[0].entities)
+    else:
+        # For GET requests, just render the template
+        return render_template('sentiment_analysis.html', text_to_analyze=text_to_analyze)
