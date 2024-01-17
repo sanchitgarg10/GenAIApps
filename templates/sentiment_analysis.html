@@ -2,47 +2,59 @@
 <html>
 <head>
     <title>Sentiment Analysis Demo</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Sentiment Analysis</h1>
-    <form action="/sentiment-analysis" method="post">
-        <textarea name="text_to_analyze" placeholder="Enter text here"></textarea>
-        <br>
-        <input type="submit" value="Analyze">
-    </form>
+    <div class="container mt-5">
+        <h1 class="mb-4">Sentiment Analysis</h1>
+        <form action="/sentiment-analysis" method="post">
+            <div class="form-group">
+                <textarea class="form-control" name="text_to_analyze" placeholder="Enter text here" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Analyze</button>
+        </form>
 
-    {% if sentiment %}
-    <h2>Analysis Results</h2>
-    <p><strong>Sentiment:</strong> {{ sentiment }}</p>
-    
-    {% if key_phrases %}
-    <p><strong>Key Phrases:</strong></p>
-    <ul>
-        {% for phrase in key_phrases %}
-        <li>{{ phrase }}</li>
-        {% endfor %}
-    </ul>
-    <!-- Existing code -->
+        {% if sentiment %}
+        <div class="results mt-4">
+            <h2>Analysis Results</h2>
+            <p><strong>Sentiment:</strong> {{ sentiment }}</p>
 
-    {% if entities %}
-    <p><strong>Entities:</strong></p>
-    <ul>
-        {% for entity in entities %}
-        <li>{{ entity.text }} ({{ entity.category }})</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+            {% if key_phrases %}
+            <p><strong>Key Phrases:</strong></p>
+            <ul class="list-group mb-4">
+                {% for phrase in key_phrases %}
+                <li class="list-group-item">{{ phrase }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
 
-    {% if linked_entities %}
-    <p><strong>Linked Entities:</strong></p>
-    <ul>
-        {% for linked_entity in linked_entities %}
-        <li>{{ linked_entity.name }} (<a href="{{ linked_entity.url }}">{{ linked_entity.url }}</a>)</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+            {% if entities %}
+            <p><strong>Entities:</strong></p>
+            <ul class="list-group mb-4">
+                {% for entity in entities %}
+                <li class="list-group-item">{{ entity.text }} ({{ entity.category }})</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
 
-    {% endif %}
-    {% endif %}
+            {% if linked_entities %}
+            <p><strong>Linked Entities:</strong></p>
+            <ul class="list-group">
+                {% for linked_entity in linked_entities %}
+                <li class="list-group-item">
+                    <a href="{{ linked_entity.url }}" target="_blank">{{ linked_entity.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Optional JavaScript and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.9/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
