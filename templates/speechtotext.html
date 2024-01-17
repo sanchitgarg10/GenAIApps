@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Speech-to-Text</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .list-group-item { padding: 0.5rem 1.25rem; }
+        /* Additional styles can be added here if needed */
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Speech-to-Text</h1>
+        <form action="/speechtotext" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="audiofile">Choose Audio File</label>
+                <input type="file" class="form-control-file" name="audiofile" id="audiofile">
+            </div>
+            <button type="submit" class="btn btn-primary">Upload and Transcribe</button>
+        </form>
+        
+        {% if transcription %}
+        <div class="results mt-4">
+            <h2>Transcription Results</h2>
+            <textarea class="form-control" rows="20">{{ transcription }}</textarea>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Optional JavaScript and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.9/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

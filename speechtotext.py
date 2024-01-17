@@ -4,15 +4,15 @@ import moviepy.editor as mp
 import os
 
 # Create a Blueprint
-audiototext_bp = Blueprint('audiototext', __name__, template_folder='templates')
+speechtotext_bp = Blueprint('speechtotext', __name__, template_folder='templates')
 
 # Function to convert MP4 to MP3
 def convert_mp4_to_mp3(mp4_path, mp3_path):
     clip = mp.VideoFileClip(mp4_path)
     clip.audio.write_audiofile(mp3_path)
 
-# Route for audio-to-text functionality
-@audiototext_bp.route('/whisper', methods=['GET', 'POST'])
+# Route for speech-to-text functionality
+@speechtotext_bp.route('/speechtotext', methods=['GET', 'POST'])
 def whisper_transcribe():
     transcription = ""
     if request.method == 'POST':
@@ -43,5 +43,5 @@ def whisper_transcribe():
         # Clean up uploaded file
         os.remove(audio_path)
 
-    return render_template('whisper.html', transcription=transcription)
+    return render_template('speechtotext.html', transcription=transcription)
 
