@@ -6,3 +6,9 @@ coverage
 # ecdsa
 # paramiko
 # pycrypto
+flask
+azure-cognitiveservices-speech
+azure-ai-textanalytics
+openai-whisper
+moviepy
+imageio_ffmpeg

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Speech Translation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Speech Translation</h1>
+        <form action="/speech-translate" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Upload audio file:</label>
+                <input type="file" class="form-control-file" name="file" id="file" required>
+            </div>
+            <div class="form-group">
+                <label for="target_language">Select Target Language:</label>
+                <select class="form-control" name="target_language" id="target_language">
+                    {% for code, language in languages.items() %}
+                    <option value="{{ code }}">{{ language }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Translate</button>
+        </form>
+        
+        {% if transcription %}
+        <div class="results mt-4">
+            <h2>Transcription:</h2>
+            <p>{{ transcription }}</p>
+
+            <h2>Translation ({{ language }}):</h2>
+            <p>{{ translation }}</p>
+        </div>
+        {% endif %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.9/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
