@@ -4,12 +4,20 @@
     <title>Speech Translation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+<script>
+    function showLoading() {
+        document.getElementById('loadingMessage').style.display = 'block';
+    }
+    </script>
 <body>
+    <div id="loadingMessage" style="display: none;">
+        <p>Processing your request, please wait...</p>
+    </div>
     <div class="container mt-5">
         <h1>Speech Translation</h1>
-        <form action="/speech-translate" method="post" enctype="multipart/form-data">
+        <form action="/speech-translate" method="post" enctype="multipart/form-data" onsubmit="showLoading()">
             <div class="form-group">
-                <label for="file">Upload audio file:</label>
+                <label for="file">Upload mp3/mp4 file. Pls wait as audio extraction and translation could take 1-2 min depending on length. Keep files less than 10 min.</label>
                 <input type="file" class="form-control-file" name="file" id="file" required>
             </div>
             <div class="form-group">

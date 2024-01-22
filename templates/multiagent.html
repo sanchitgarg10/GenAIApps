@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multi-Agent System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .example-box {
+            background-color: #f8f9fa; /* Light grey background */
+            border: 1px solid #dee2e6; /* Grey border */
+            border-radius: 0.25rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem; /* Slightly reduced font size */
+        }
+        @media (min-width: 768px) {
+            .example-row {
+                display: flex;
+            }
+            .example-col {
+                flex: 1;
+                padding: 0 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Multi-Agent Brainstorming</h1>
+        <div class="example-row">
+            <div class="example-col">
+                <div class="example-box">
+                    <strong>Example for Agent 1:</strong> <br><br>
+                    <strong>Role:</strong> You are Alice, a Biotechnologist with a Ph.D. in Bioengineering. Partnered with Bob for collaborative projects.<br><br>
+                    <strong>Objective:</strong> Create ideas for a ML based Biotech project. Brainstorm with Bob to for potential ML applications in Biotech, focusing on quick POCs. <br>
+                    After initial brainstorming, focus on elaborating a detailed plan for the selected idea, covering technical details, market strategy, and implementation.<br><br>
+                    <strong>Discussion Points:</strong><br>
+                    1. Suggest biotech projects requiring ML applications.<br>
+                    2. Focus is on creating POCs in less than 1 week<br>
+                    3. After initial brainstorming, help choose the most viable idea.<br>
+                    4. Contribute to a detailed plan, focusing on scientific viability, resource allocation, and market introduction.<br>
+                   
+                </div>
+            </div>
+            <div class="example-col">
+                <div class="example-box">
+                    <strong>Example for Agent 2:</strong> <br><br>
+                    <strong>Role:</strong> You are Bob, a computer science engineer and ML expert. Partnered with Alice for collaborative biotech projects. <br><br>
+                    <strong>Objective:</strong> Brainstorm with Alice to develop project ideas, focusing on creating quick POCs. <br><br>
+                    <strong>Discussion Points:</strong><br>
+                    1. Assess biotech ideas that could use ML.<br>
+                    2. Assess ideas from Comp Science perspective, ease of implementation, cost effectiveness.<br>
+                    3. Brainstorm to discuss projects which require low tech resources and can be easily implemented<br>
+                    4. Come out with a detailed technical plan.<br>
+                </div>
+            </div>
+        </div>
+        <form method="POST">
+            <div class="form-group" style="margin-bottom: 15px;"> <!-- Add the style attribute here -->
+                <label for="api_key">Pls provide your OpenAI API Key:</label>
+                <input type="text" class="form-control" id="api_key" name="api_key" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;"> <!-- Add the style attribute here -->
+                <label for="agent1_role">Agent 1 Role Description:</label>
+                <textarea class="form-control" id="agent1_role" name="agent1_role" rows="5" required></textarea>
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;"> <!-- Add the style attribute here -->
+                <label for="agent2_role">Agent 2 Role Description:</label>
+                <textarea class="form-control" id="agent2_role" name="agent2_role" rows="5" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Start Conversation</button>
+            <p style="color: #ff9999; font-style: italic;">Pls wait for a couple of minutes for the response to be loaded</p>
+
+        </form>
+        <!-- Conversation Results Section -->
+        {% if conversation %}
+            <h2 class="mt-4">Conversation Results</h2>
+            <div class="list-group mt-3">
+                {% for line in conversation %}
+                <div class="list-group-item">{{ line }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

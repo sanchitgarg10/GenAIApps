@@ -1,3 +1,4 @@
+#sudo apt-get install ffmpeg
 Fabric
 Flask-SQLAlchemy
 Flask-WTF
@@ -12,3 +13,7 @@ azure-ai-textanalytics
 openai-whisper
 moviepy
 imageio_ffmpeg
+pydub
+uuid
+langchain
+openai
