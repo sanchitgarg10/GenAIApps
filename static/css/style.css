@@ -1,0 +1,7 @@
+/* Custom styles */
+.back-button {
+    position: fixed;
+    bottom: 10px;
+    left: 40px;
+    z-index: 1000;
+}
