@@ -1,39 +1,83 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Sanchit's Portfolio</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container mt-5">
-        <h1 class="mb-4">Hi, I am Sanchit</h1>
-        <p>These are demos of some of the applications I have created. Feel free to try them out.</p>
+    <head>
+        <meta charset="UTF-8">
+        <title>Sanchit Garg</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container mt-5">
+            <h1 class="mb-4">Hi, I am Sanchit</h1>
+            <p>Below you can explore various applications I have created and my work. Feel free to try out the applications</p>
+            
+            <h5>LLMs</h5>
+            <div class="list-group mb-4">
+                <a href="/multiagent" class="list-group-item list-group-item-action">
+                    <strong>Multi-Agent Brainstorming - </strong>Multiple bots talk to each other to perform a task
+                </a>
+                <a href="/phi-2" class="list-group-item list-group-item-action">
+                    <strong>Running Microsoft's Phi-2 Locally - </strong>Less than 10 lines of code; No internet required
+                </a>
+                <!-- You can add more LLM applications here -->
+            </div>
+    
+            <h5>Natural Language Applications</h5>
+            <div class="list-group mb-4">
+                <a href="/sentiment-analysis" class="list-group-item list-group-item-action">
+                    <strong>Sentiment Analysis and Entity Recognition -</strong>This app takes an input and performs sentiment analysis, along with recognizing key entities and phrases.
+                </a>
+                <a href="/speechtotext" class="list-group-item list-group-item-action">
+                    <strong>Speech to text -</strong> This app takes an mp3 or mp4 file as input, and provides transcription for the same by converting audio to text.
+                </a>
+                <a href="/speech-translate" class="list-group-item list-group-item-action">
+                    <strong>Speech translate - </strong>Translate audio of your mp3/mp4 files into a language of your choice
+                </a>
+                <!-- More natural language applications can be added here -->
+            </div>
+    
+            <h5>Experiments with LLM Tools</h5>
+            <div class="list-group mb-4">
+                <a href="/product-ad-video" class="list-group-item list-group-item-action">
+                    Creating a Product Advertising Video using Generative AI Tools
+                </a>
+                <a href="/custom-gpts" class="list-group-item list-group-item-action">
+                    How to Build Custom GPTs
+                </a>
+                <a href="/video-lectures" class="list-group-item list-group-item-action">
+                    Templatizing Video Lectures
+                </a>
+                <!-- More experiment links can go here -->
+            </div>
+    
+            <h5>My Work at Finacular</h5>
+            <div class="list-group mb-4">
+                <a href="/finacular-work" class="list-group-item list-group-item-action">
+                    I had built a WealthTech platform earlier in 2021
+                </a>
+                <!-- Links to your work or projects at Finacular -->
+            </div>
+    
+            <h2>About Me</h2>
+            <div class="row">
+                <div class="col-lg-2">
+                    <!-- Adjust the 'src' attribute to the path of your image -->
+                    <img src="{{ url_for('static', filename='imgs/sg.png') }}" alt="Sanchit Garg" class="img-thumbnail">
+                </div>
+                <div class="col-lg-10">
+                    <p>
+                        I have over 8 years of experience and have been a Co-founder of 3 Tech Startups. <br>
+                        Have also worked at few Corporates - Vodafone, Paisabazaar & Microsoft.<br>
+                        MBA: IIM Indore, 2016 <br>
+                        B.Tech: Comp Sci, IIIT Delhi, 2013 <br>
+                    </p>
+                    <p>
+                        You can reach out to me at <a href="mailto:sanchitgarg5@gmail.com">sanchitgarg5@gmail.com</a> or connect with me on <a href="https://www.linkedin.com/in/sanchitgarg5" target="_blank">LinkedIn</a>.
+                    </p>
+                </div>
+            </div>
 
-        <div class="list-group">
-            <a href="/sentiment-analysis" class="list-group-item list-group-item-action">
-                <h5 class="mb-1">Sentiment Analysis and Entity Recognition</h5>
-                <p class="mb-1">This app takes an input and performs sentiment analysis, along with recognizing key entities and phrases.</p>
-            </a>
-
-            <a href="/speechtotext" class="list-group-item list-group-item-action">
-                <h5 class="mb-1">Speech to text</h5>
-                <p class="mb-1">This app takes an mp3 or mp4 file as input, and provides transcription for the same by converting audio to text.</p>
-            </a>
-
-            <a href="/speech-translate" class="list-group-item list-group-item-action">
-                <h5 class="mb-1">Speech translate</h5>
-                <p class="mb-1">Translate audio of your mp3/mp4 files into a language of your choice.</p>
-            </a>
-            <a href="/multiagent" class="list-group-item list-group-item-action">
-                <h5 class="mb-1">Multi-Agent Brainstorming</h5>
-                <p class="mb-1">Multiple bots talk to each other to perform a task</p>
-            </a>
-
-
-            <!-- More application links can go here -->
         </div>
-    </div>
 
     <!-- Optional JavaScript and Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
